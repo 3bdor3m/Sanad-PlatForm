@@ -1,0 +1,41 @@
+0 verbose cli C:\Program Files\nodejs\node.exe C:\Program Files\nodejs\node_modules\npm\bin\npm-cli.js
+1 info using npm@11.6.2
+2 info using node@v24.12.0
+3 silly config load:file:C:\Program Files\nodejs\node_modules\npm\npmrc
+4 silly config load:file:M:\Sanad\Website\Sanad-Platform\sanad-static-semantic\.npmrc
+5 silly config load:file:C:\Users\Abdulkader AlRamadan\.npmrc
+6 silly config load:file:C:\Users\Abdulkader AlRamadan\AppData\Roaming\npm\etc\npmrc
+7 verbose title npm exec antigravity-awesome-skills
+8 verbose argv "exec" "--cache" "./npx-cache" "--" "antigravity-awesome-skills"
+9 verbose logfile logs-max:10 dir:M:\Sanad\Website\Sanad-Platform\sanad-static-semantic\npx-cache\_logs\2026-02-28T03_16_31_952Z-
+10 verbose logfile M:\Sanad\Website\Sanad-Platform\sanad-static-semantic\npx-cache\_logs\2026-02-28T03_16_31_952Z-debug-0.log
+11 silly logfile done cleaning log files
+12 silly packumentCache heap:4496293888 maxSize:1124073472 maxEntrySize:562036736
+13 http fetch GET 200 https://registry.npmjs.org/antigravity-awesome-skills 3023ms (cache miss)
+14 silly packumentCache heap:4496293888 maxSize:1124073472 maxEntrySize:562036736
+15 silly packumentCache heap:4496293888 maxSize:1124073472 maxEntrySize:562036736
+16 http fetch GET 200 https://registry.npmjs.org/npm 4824ms
+17 silly idealTree buildDeps
+18 silly fetch manifest antigravity-awesome-skills@6.5.0
+19 silly packumentCache full:https://registry.npmjs.org/antigravity-awesome-skills cache-miss
+20 http fetch GET 200 https://registry.npmjs.org/antigravity-awesome-skills 665ms (cache miss)
+21 silly packumentCache full:https://registry.npmjs.org/antigravity-awesome-skills set size:undefined disposed:false
+22 silly placeDep ROOT antigravity-awesome-skills@6.5.0 OK for:  want: 6.5.0
+23 silly reify moves {}
+24 silly audit bulk request { 'antigravity-awesome-skills': [ '6.5.0' ] }
+25 http cache antigravity-awesome-skills@https://registry.npmjs.org/antigravity-awesome-skills/-/antigravity-awesome-skills-6.5.0.tgz 0ms (cache hit)
+26 silly tarball no local data for antigravity-awesome-skills@https://registry.npmjs.org/antigravity-awesome-skills/-/antigravity-awesome-skills-6.5.0.tgz. Extracting by manifest.
+27 http fetch POST 200 https://registry.npmjs.org/-/npm/v1/security/advisories/bulk 260ms
+28 silly audit report {}
+29 http fetch GET 200 https://registry.npmjs.org/antigravity-awesome-skills/-/antigravity-awesome-skills-6.5.0.tgz 583ms (cache miss)
+30 verbose cwd M:\Sanad\Website\Sanad-Platform\sanad-static-semantic
+31 verbose os Windows_NT 10.0.26200
+32 verbose node v24.12.0
+33 verbose npm  v11.6.2
+34 notice
+34 notice New [33mminor[39m version of npm available! [33m11.6.2[39m -> [34m11.11.0[39m
+34 notice Changelog: [34mhttps://github.com/npm/cli/releases/tag/v11.11.0[39m
+34 notice To update run: [4mnpm install -g npm@11.11.0[24m
+34 notice  { force: true, Symbol(proc-log.meta): true }
+35 verbose exit 128
+36 verbose code 128

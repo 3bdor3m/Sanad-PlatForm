@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>سند | ابدأ رحلة الأتمتة</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Almarai:wght@300;400;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div id="root">
+        <!-- Navbar -->
+        <nav class="navbar">
+            <div class="container navbar-content">
+                <a class="logo-icon" href="index.html">
+                    <img src="Assets/Logo-Without.png" alt="سند" height="50" />
+                </a>
+                <a href="index.html" class="nav-link">إلغاء والعودة</a>
+            </div>
+        </nav>
+
+        <main class="onboarding-wrapper">
+            <div class="container">
+                <!-- Stepper -->
+                <div class="stepper-container">
+                    <div class="step-item active" id="step-item-1">
+                        <div class="step-dot">1</div>
+                        <span class="step-label">المعلومات الشخصية</span>
+                    </div>
+                    <div class="step-item" id="step-item-2">
+                        <div class="step-dot">2</div>
+                        <span class="step-label">نشاطك التجاري</span>
+                    </div>
+                    <div class="step-item" id="step-item-3">
+                        <div class="step-dot">3</div>
+                        <span class="step-label">الإعدادات التقنية</span>
+                    </div>
+                    <div class="step-item" id="step-item-4">
+                        <div class="step-dot">4</div>
+                        <span class="step-label">سلوك الذكاء</span>
+                    </div>
+                </div>
+
+                <!-- Form Form -->
+                <div class="onboarding-form">
+                    <form id="onboarding-main-form">
+
+                        <!-- SECTION 1: Personal Info -->
+                        <div class="form-section active" id="section-1">
+                            <h2 class="section-title-onboard">المعلومات الشخصية</h2>
+                            <div class="onboard-grid">
+                                <div class="form-group onboard-grid-full">
+                                    <label class="form-label">الاسم الثلاثي</label>
+                                    <input type="text" class="form-input" placeholder="أدخل اسمك الكامل..." required>
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label">الجنس</label>
+                                    <div class="custom-select-wrapper" data-id="gender">
+                                        <div class="custom-select-trigger">
+                                            <span>اختر...</span>
+                                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none"
+                                                stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                                stroke-linejoin="round">
+                                                <polyline points="6 9 12 15 18 9"></polyline>
+                                            </svg>
+                                        </div>
+                                        <div class="custom-options">
+                                            <div class="custom-option" data-value="male">ذكر</div>
+                                            <div class="custom-option" data-value="female">أنثى</div>
+                                        </div>
+                                        <input type="hidden" name="gender" required>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label">رقم الهاتف</label>
+                                    <input type="tel" class="form-input" placeholder="05xxxxxxxx" required>
+                                </div>
+                                <div class="form-group onboard-grid-full">
+                                    <label class="form-label">البريد الإلكتروني الشخصي</label>
+                                    <input type="email" class="form-input" placeholder="example@gmail.com" required>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- SECTION 2: Business Info -->
+                        <div class="form-section" id="section-2">
+                            <h2 class="section-title-onboard">معلومات النشاط التجاري</h2>
+                            <div class="form-group">
+                                <label class="form-label">تصنيف النشاط</label>
+                                <div class="toggle-group">
+                                    <button type="button" class="toggle-btn active"
+                                        data-type="commercial">تجاري</button>
+                                    <button type="button" class="toggle-btn" data-type="industrial">صناعي</button>
+                                </div>
+                            </div>
+                            <div class="onboard-grid">
+                                <div class="form-group">
+                                    <label class="form-label">اسم النشاط</label>
+                                    <input type="text" class="form-input" placeholder="اسم الشركة أو المحل" required>
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label">نوع النشاط</label>
+                                    <input type="text" class="form-input" placeholder="مثال: مطعم، مصنع ملابس..."
+                                        required>
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label">عمر النشاط</label>
+                                    <input type="text" class="form-input" placeholder="منذ متى بدأ النشاط؟">
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label">حالة التواجد</label>
+                                    <div class="custom-select-wrapper" data-id="presence">
+                                        <div class="custom-select-trigger">
+                                            <span>اختر...</span>
+                                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none"
+                                                stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                                stroke-linejoin="round">
+                                                <polyline points="6 9 12 15 18 9"></polyline>
+                                            </svg>
+                                        </div>
+                                        <div class="custom-options">
+                                            <div class="custom-option" data-value="online">أونلاين فقط</div>
+                                            <div class="custom-option" data-value="local">محل/موقع فعلي</div>
+                                            <div class="custom-option" data-value="both">كلاهما</div>
+                                        </div>
+                                        <input type="hidden" name="presence">
+                                    </div>
+                                </div>
+                                <div class="form-group onboard-grid-full">
+                                    <label class="form-label">وصف النشاط</label>
+                                    <textarea class="form-input" style="height: 80px;"
+                                        placeholder="اشرح لنا طبيعة عملك باختصار..." required></textarea>
+                                </div>
+                                <div class="form-group onboard-grid-full">
+                                    <label class="form-label">عنوان النشاط</label>
+                                    <input type="text" class="form-input" placeholder="المدينة، الحي، الشارع..."
+                                        required>
+                                </div>
+
+                                <!-- Structured Schedule -->
+                                <div class="form-group onboard-grid-full">
+                                    <label class="form-label">أوقات العمل الأسبوعية</label>
+                                    <div class="schedule-grid">
+                                        <!-- Row Template for days -->
+                                        <div class="schedule-row" data-day="sunday">
+                                            <span class="day-name">الأحد</span>
+                                            <label class="holiday-toggle">
+                                                <input type="checkbox" class="schedule-holiday">
+                                                <div class="toggle-switch"></div>
+                                                <span style="font-size: 0.75rem; color: var(--white-40);">عطلة</span>
+                                            </label>
+                                            <div class="time-range">
+                                                <span style="font-size: 0.7rem; color: var(--white-40);">من</span>
+                                                <input type="time" value="09:00">
+                                            </div>
+                                            <div class="time-range">
+                                                <span style="font-size: 0.7rem; color: var(--white-40);">إلى</span>
+                                                <input type="time" value="22:00">
+                                            </div>
+                                        </div>
+                                        <!-- Copy for other days -->
+                                        <div class="schedule-row" data-day="monday">
+                                            <span class="day-name">الاثنين</span>
+                                            <label class="holiday-toggle">
+                                                <input type="checkbox" class="schedule-holiday">
+                                                <div class="toggle-switch"></div>
+                                                <span style="font-size: 0.75rem; color: var(--white-40);">عطلة</span>
+                                            </label>
+                                            <div class="time-range"><input type="time" value="09:00"></div>
+                                            <div class="time-range"><input type="time" value="22:00"></div>
+                                        </div>
+                                        <div class="schedule-row" data-day="tuesday">
+                                            <span class="day-name">الثلاثاء</span>
+                                            <label class="holiday-toggle">
+                                                <input type="checkbox" class="schedule-holiday">
+                                                <div class="toggle-switch"></div>
+                                                <span style="font-size: 0.75rem; color: var(--white-40);">عطلة</span>
+                                            </label>
+                                            <div class="time-range"><input type="time" value="09:00"></div>
+                                            <div class="time-range"><input type="time" value="22:00"></div>
+                                        </div>
+                                        <div class="schedule-row" data-day="wednesday">
+                                            <span class="day-name">الأربعاء</span>
+                                            <label class="holiday-toggle">
+                                                <input type="checkbox" class="schedule-holiday">
+                                                <div class="toggle-switch"></div>
+                                                <span style="font-size: 0.75rem; color: var(--white-40);">عطلة</span>
+                                            </label>
+                                            <div class="time-range"><input type="time" value="09:00"></div>
+                                            <div class="time-range"><input type="time" value="22:00"></div>
+                                        </div>
+                                        <div class="schedule-row" data-day="thursday">
+                                            <span class="day-name">الخميس</span>
+                                            <label class="holiday-toggle">
+                                                <input type="checkbox" class="schedule-holiday">
+                                                <div class="toggle-switch"></div>
+                                                <span style="font-size: 0.75rem; color: var(--white-40);">عطلة</span>
+                                            </label>
+                                            <div class="time-range"><input type="time" value="09:00"></div>
+                                            <div class="time-range"><input type="time" value="22:00"></div>
+                                        </div>
+                                        <div class="schedule-row" data-day="friday">
+                                            <span class="day-name">الجمعة</span>
+                                            <label class="holiday-toggle">
+                                                <input type="checkbox" class="schedule-holiday" checked>
+                                                <div class="toggle-switch"></div>
+                                                <span style="font-size: 0.75rem; color: var(--white-40);">عطلة</span>
+                                            </label>
+                                            <div class="time-range"><input type="time" value="09:00"></div>
+                                            <div class="time-range"><input type="time" value="22:00"></div>
+                                        </div>
+                                        <div class="schedule-row" data-day="saturday">
+                                            <span class="day-name">السبت</span>
+                                            <label class="holiday-toggle">
+                                                <input type="checkbox" class="schedule-holiday">
+                                                <div class="toggle-switch"></div>
+                                                <span style="font-size: 0.75rem; color: var(--white-40);">عطلة</span>
+                                            </label>
+                                            <div class="time-range"><input type="time" value="09:00"></div>
+                                            <div class="time-range"><input type="time" value="22:00"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label">هل يوجد بيانات مخزون؟</label>
+                                    <div class="custom-select-wrapper" data-id="inventory">
+                                        <div class="custom-select-trigger">
+                                            <span>اختر...</span>
+                                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none"
+                                                stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                                stroke-linejoin="round">
+                                                <polyline points="6 9 12 15 18 9"></polyline>
+                                            </svg>
+                                        </div>
+                                        <div class="custom-options">
+                                            <div class="custom-option" data-value="no">لا</div>
+                                            <div class="custom-option" data-value="yes">نعم</div>
+                                        </div>
+                                        <input type="hidden" name="inventory">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label">هل يوجد نظام طلبات؟</label>
+                                    <div class="custom-select-wrapper" data-id="order-system">
+                                        <div class="custom-select-trigger">
+                                            <span>اختر...</span>
+                                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none"
+                                                stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                                stroke-linejoin="round">
+                                                <polyline points="6 9 12 15 18 9"></polyline>
+                                            </svg>
+                                        </div>
+                                        <div class="custom-options">
+                                            <div class="custom-option" data-value="no">لا</div>
+                                            <div class="custom-option" data-value="yes">نعم</div>
+                                        </div>
+                                        <input type="hidden" name="order-system">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label">رابط التواصل الاجتماعي</label>
+                                    <input type="url" class="form-input" placeholder="Instagram, Twitter, FB...">
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label">الإيميل الخاص بالنشاط</label>
+                                    <input type="email" class="form-input" placeholder="biz@example.com" required>
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label">الجمهور المستهدف</label>
+                                    <input type="text" class="form-input" placeholder="مثال: الأمهات، الشباب..."
+                                        required>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- SECTION 3: Technical & AI Persona -->
+                        <div class="form-section" id="section-3">
+                            <h2 class="section-title-onboard">المعلومات التقنية ومصادر المعرفة</h2>
+
+                            <div class="form-group">
+                                <label class="form-label">مصدر المعرفة المفضل</label>
+                                <div class="toggle-group" id="knowledge-source-toggle">
+                                    <button type="button" class="toggle-btn active" data-source="template">استخدام تمبلت
+                                        تواصل عام</button>
+                                    <button type="button" class="toggle-btn" data-source="upload">رفع ملفات النشاط
+                                        الخاصة</button>
+                                </div>
+                            </div>
+
+                            <div class="form-group" id="upload-container" style="display: none;">
+                                <div class="file-upload-zone" id="knowledge-upload">
+                                    <div class="file-upload-icon">
+                                        <svg width="40" height="40" viewBox="0 0 24 24" fill="none"
+                                            stroke="currentColor" stroke-width="2">
+                                            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+                                            <polyline points="17 8 12 3 7 8" />
+                                            <line x1="12" y1="3" x2="12" y2="15" />
+                                        </svg>
+                                    </div>
+                                    <p>اسحب ملف المعلومات هنا أو اضغط للرفع</p>
+                                    <span style="font-size: 0.7rem; color: var(--white-40);">يدعم PDF, DOCX, TXT</span>
+                                </div>
+                            </div>
+
+                            <div class="form-group" id="template-container">
+                                <div
+                                    style="background: rgba(23, 229, 150, 0.05); padding: 1.5rem; border-radius: var(--radius-md); border-right: 4px solid var(--neon);">
+                                    <p style="font-size: 0.9rem; color: var(--white-70);">سيستخدم النظام "تمبلت تواصل"
+                                        احترافي يتناسب مع أغلب الأنشطة التجارية لضمان ردود ودودة وفعالة.</p>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="form-label">شخصية المساعد الذكي</label>
+                                <div class="selection-cards">
+                                    <div class="selection-card active" data-persona="formal">
+                                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
+                                            stroke="currentColor" stroke-width="2">
+                                            <path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
+                                            <circle cx="9" cy="7" r="4" />
+                                            <path d="M23 21v-2a4 4 0 0 0-3-3.87" />
+                                            <path d="M16 3.13a4 4 0 0 1 0 7.75" />
+                                        </svg>
+                                        <div>رسمي وجاد</div>
+                                    </div>
+                                    <div class="selection-card" data-persona="friendly">
+                                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
+                                            stroke="currentColor" stroke-width="2">
+                                            <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" />
+                                        </svg>
+                                        <div>ودي وترحيبي</div>
+                                    </div>
+                                    <div class="selection-card" data-persona="helpful">
+                                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
+                                            stroke="currentColor" stroke-width="2">
+                                            <circle cx="12" cy="12" r="10" />
+                                            <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3" />
+                                            <line x1="12" y1="17" x2="12.01" y2="17" />
+                                        </svg>
+                                        <div>خبير عملي</div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="onboard-grid">
+                                <div class="form-group">
+                                    <label class="form-label">اللغة واللكنة</label>
+                                    <div class="custom-select-wrapper" data-id="language">
+                                        <div class="custom-select-trigger">
+                                            <span>اختر...</span>
+                                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none"
+                                                stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                                stroke-linejoin="round">
+                                                <polyline points="6 9 12 15 18 9"></polyline>
+                                            </svg>
+                                        </div>
+                                        <div class="custom-options">
+                                            <div class="custom-option" data-value="fusha">عربية فصحى</div>
+                                            <div class="custom-option" data-value="ammiya">عامية (حسب الدولة)</div>
+                                            <div class="custom-option" data-value="mixed">مزيج بسيط</div>
+                                        </div>
+                                        <input type="hidden" name="language">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label">يتواصل مع من؟</label>
+                                    <div class="custom-select-wrapper" data-id="target">
+                                        <div class="custom-select-trigger">
+                                            <span>الجميع</span>
+                                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none"
+                                                stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                                stroke-linejoin="round">
+                                                <polyline points="6 9 12 15 18 9"></polyline>
+                                            </svg>
+                                        </div>
+                                        <div class="custom-options">
+                                            <div class="custom-option" data-value="all">الجميع</div>
+                                            <div class="custom-option" data-value="females">إناث فقط</div>
+                                            <div class="custom-option" data-value="males">ذكور فقط</div>
+                                            <div class="custom-option" data-value="adults">كبار فقط</div>
+                                        </div>
+                                        <input type="hidden" name="target" value="all">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="form-label">قنوات التواصل المفعلة</label>
+                                <div class="chips">
+                                    <label class="chip"><input type="checkbox" checked> واتساب</label>
+                                    <label class="chip"><input type="checkbox" checked> الموقع</label>
+                                    <label class="chip"><input type="checkbox"> تيليجرام</label>
+                                    <label class="chip"><input type="checkbox"> إنستجرام</label>
+                                    <label class="chip"><input type="checkbox"> فيسبوك</label>
+                                    <label class="chip"><input type="checkbox"> جوجل</label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- SECTION 4: AI Behavior & Final -->
+                        <div class="form-section" id="section-4">
+                            <h2 class="section-title-onboard">إعدادات سلوك الذكاء الاصطناعي</h2>
+
+                            <div class="form-group">
+                                <label class="form-label">كيف يتعامل عندما لا يعرف الجواب؟</label>
+                                <div class="custom-select-wrapper" data-id="fallback">
+                                    <div class="custom-select-trigger">
+                                        <span>اختر...</span>
+                                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none"
+                                            stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                            stroke-linejoin="round">
+                                            <polyline points="6 9 12 15 18 9"></polyline>
+                                        </svg>
+                                    </div>
+                                    <div class="custom-options">
+                                        <div class="custom-option" data-value="fallback_text">أرسل نص: "سأتأكد من
+                                            المعلومة وأعود إليك"</div>
+                                        <div class="custom-option" data-value="redirect_human">تحويل الدردشة لموظف بشري
+                                        </div>
+                                        <div class="custom-option" data-value="ask_phone">طلب رقم الهاتف للتواصل لاحقاً
+                                        </div>
+                                    </div>
+                                    <input type="hidden" name="fallback">
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="form-label">الكلمات المحظورة (تفصل بينها بفاصلة)</label>
+                                <textarea class="form-input" style="height: 100px;" id="forbidden-words"
+                                    placeholder="أدخل الكلمات المحظورة هنا...">غير قانوني، سياسية، منافس، اختراق، كود، تخفيض غير مصرح به</textarea>
+                            </div>
+
+                            <div class="range-config">
+                                <div class="range-header">
+                                    <label class="form-label">مدى الالتزام بالمصادر (الإبداع)</label>
+                                    <span id="creative-value" class="range-value-badge">80%</span>
+                                </div>
+                                <div class="range-input-wrapper">
+                                    <input type="range" min="1" max="100" value="80" id="creativity-slider">
+                                    <div class="range-labels">
+                                        <span>إبداعي جداً</span>
+                                        <span>ملتزم تماماً</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="form-label">إعدادات الإشعارات</label>
+                                <div class="chips">
+                                    <label class="chip"><input type="checkbox" checked> إشعار عند كل طلب جديد</label>
+                                    <label class="chip"><input type="checkbox" checked> تقرير يومي</label>
+                                    <label class="chip"><input type="checkbox"> تنبيه عند الردود الخاطئة</label>
+                                </div>
+                            </div>
+
+                            <div
+                                style="margin-top: 2rem; background: rgba(23, 229, 150, 0.05); padding: 1.5rem; border-radius: var(--radius-md); border-right: 4px solid var(--neon);">
+                                <p style="font-size: 0.85rem; line-height: 1.6;">بمجرد الضغط على إرسال، سنقوم بمعالجة
+                                    بيانات نشاطك وبناء نسخة تجريبية لخبير الـ AI الخاص بك خلال 24 ساعة.</p>
+                            </div>
+                        </div>
+
+                        <!-- In-Page Error Message Container -->
+                        <div id="form-error-message" class="error-banner"></div>
+
+                        <!-- Navigation Buttons -->
+                        <div class="form-nav-buttons">
+                            <button type="button" class="btn-glass-secondary" id="btn-prev"
+                                style="visibility: hidden;">السابق</button>
+                            <button type="button" class="btn-primary" id="btn-next"
+                                style="padding: 0.625rem 2.5rem;">التالي</button>
+                            <button type="submit" class="btn-primary" id="btn-submit"
+                                style="display: none; padding: 0.625rem 2.5rem;">إرسال وبناء
+                                النظام</button>
+                        </div>
+
+                    </form>
+                </div>
+            </div>
+        </main>
+
+        <footer class="footer-bottom" style="border: none; padding: 2rem 0;">
+            <p class="footer-copyright">© 2026 سند لأتمتة الأعمال. جميع الحقوق محفوظة.</p>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

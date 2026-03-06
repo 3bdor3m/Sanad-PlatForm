@@ -1,0 +1,14 @@
+Cloning into 'C:\Users\ABDULK~1\AppData\Local\Temp\ag-skills-d8cVV7'...
+error: unable to create symlink skills/dbos-golang/CLAUDE.md: Permission denied
+error: unable to create symlink skills/dbos-python/CLAUDE.md: Permission denied
+error: unable to create symlink skills/dbos-typescript/CLAUDE.md: Permission denied
+error: unable to create symlink skills/docx: Permission denied
+error: unable to create symlink skills/pdf: Permission denied
+error: unable to create symlink skills/pptx: Permission denied
+Updating files:  66% (2946/4447)Updating files:  67% (2980/4447)Updating files:  68% (3024/4447)Updating files:  69% (3069/4447)Updating files:  70% (3113/4447)Updating files:  71% (3158/4447)Updating files:  72% (3202/4447)Updating files:  73% (3247/4447)error: unable to create symlink skills/xlsx: Permission denied
+Updating files:  74% (3291/4447)Updating files:  75% (3336/4447)Updating files:  76% (3380/4447)Updating files:  77% (3425/4447)Updating files:  78% (3469/4447)Updating files:  79% (3514/4447)Updating files:  80% (3558/4447)Updating files:  81% (3603/4447)Updating files:  82% (3647/4447)Updating files:  83% (3692/4447)Updating files:  84% (3736/4447)Updating files:  85% (3780/4447)Updating files:  86% (3825/4447)Updating files:  87% (3869/4447)Updating files:  88% (3914/4447)Updating files:  89% (3958/4447)Updating files:  90% (4003/4447)Updating files:  91% (4047/4447)Updating files:  92% (4092/4447)Updating files:  93% (4136/4447)Updating files:  94% (4181/4447)Updating files:  95% (4225/4447)Updating files:  96% (4270/4447)Updating files:  97% (4314/4447)Updating files:  98% (4359/4447)Updating files:  99% (4403/4447)Updating files: 100% (4447/4447)Updating files: 100% (4447/4447), done.
+fatal: unable to checkout working tree
+warning: Clone succeeded, but checkout failed.
+You can inspect what was checked out with 'git status'
+and retry with 'git restore --source=HEAD :/'
+

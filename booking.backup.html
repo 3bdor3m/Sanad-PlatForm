@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>سند | حجز موعد استشارة</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Almarai:wght@300;400;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div id="root">
+        <!-- Navbar -->
+        <nav class="navbar">
+            <div class="container navbar-content">
+                <a class="logo-icon" href="index.html">
+                    <img src="Assets/Logo-Without.png" alt="سند" height="50" />
+                </a>
+                <div class="nav-links">
+                    <a href="index.html" class="nav-link">الرئيسية</a>
+                    <a href="index.html#solutions" class="nav-link">حلولنا</a>
+                </div>
+                <div class="nav-actions">
+                    <a href="login.html" class="btn-signin">تسجيل الدخول</a>
+                </div>
+            </div>
+        </nav>
+
+        <main class="booking-wrapper">
+            <div class="container booking-container">
+                <div class="form-header">
+                    <h1 class="form-title">احجز استشارتك <span class="neon-text">الذكية</span></h1>
+                    <p class="form-subtitle">اختر الوقت المناسب لمناقشة كيفية أتمتة أعمالك بالذكاء الاصطناعي</p>
+                </div>
+
+                <div class="booking-grid">
+                    <!-- Main Booking Logic -->
+                    <div class="booking-main">
+                        <div class="calendar-header">
+                            <h3 style="font-size: 1.1rem; font-weight: 700;">فبراير 2026</h3>
+                            <div style="display: flex; gap: 0.5rem;">
+                                <button class="btn-social" style="padding: 0.4rem; width: auto;">&gt;</button>
+                                <button class="btn-social" style="padding: 0.4rem; width: auto;">&lt;</button>
+                            </div>
+                        </div>
+
+                        <div class="calendar-grid">
+                            <!-- Day labels -->
+                            <div class="calendar-day-label">ح</div>
+                            <div class="calendar-day-label">ن</div>
+                            <div class="calendar-day-label">ث</div>
+                            <div class="calendar-day-label">ر</div>
+                            <div class="calendar-day-label">خ</div>
+                            <div class="calendar-day-label">ج</div>
+                            <div class="calendar-day-label">س</div>
+
+                            <!-- Days -->
+                            <div class="calendar-day disabled">26</div>
+                            <div class="calendar-day disabled">27</div>
+                            <div class="calendar-day disabled">28</div>
+                            <div class="calendar-day disabled">29</div>
+                            <div class="calendar-day disabled">30</div>
+                            <div class="calendar-day disabled">31</div>
+                            <div class="calendar-day">1</div>
+                            <div class="calendar-day">2</div>
+                            <div class="calendar-day">3</div>
+                            <div class="calendar-day">4</div>
+                            <div class="calendar-day">5</div>
+                            <div class="calendar-day">6</div>
+                            <div class="calendar-day">7</div>
+                            <div class="calendar-day">8</div>
+                            <div class="calendar-day">9</div>
+                            <div class="calendar-day">10</div>
+                            <div class="calendar-day">11</div>
+                            <div class="calendar-day">12</div>
+                            <div class="calendar-day">13</div>
+                            <div class="calendar-day">14</div>
+                            <div class="calendar-day">15</div>
+                            <div class="calendar-day">16</div>
+                            <div class="calendar-day">17</div>
+                            <div class="calendar-day">18</div>
+                            <div class="calendar-day">19</div>
+                            <div class="calendar-day">20</div>
+                            <div class="calendar-day">21</div>
+                            <div class="calendar-day active">22</div>
+                            <div class="calendar-day">23</div>
+                            <div class="calendar-day">24</div>
+                            <div class="calendar-day">25</div>
+                            <div class="calendar-day">26</div>
+                            <div class="calendar-day">27</div>
+                            <div class="calendar-day">28</div>
+                        </div>
+
+                        <div class="slots-title">الأوقات المتاحة</div>
+                        <div class="slots-grid">
+                            <button class="slot-btn">09:00 ص</button>
+                            <button class="slot-btn selected">10:30 ص</button>
+                            <button class="slot-btn">01:00 م</button>
+                            <button class="slot-btn">02:30 م</button>
+                            <button class="slot-btn">04:00 م</button>
+                        </div>
+
+                        <div style="margin-top: 2.5rem;">
+                            <div class="form-group">
+                                <label class="form-label">ملاحظات إضافية</label>
+                                <textarea class="form-input" style="height: 100px; resize: none;"
+                                    placeholder="أخبرنا قليلاً عن نشاطك التجاري..."></textarea>
+                            </div>
+
+                            <!-- In-Page Error Message Container -->
+                            <div id="form-error-message" class="error-banner"></div>
+
+                            <button class="btn-primary btn-full">تأكيد حجز الموعد</button>
+                        </div>
+                    </div>
+
+                    <!-- Summary / Details -->
+                    <div class="booking-summary">
+                        <h3 class="summary-title">تفاصيل الحجز</h3>
+
+                        <div class="summary-item">
+                            <span class="summary-label">نوع الخدمة</span>
+                            <span class="summary-value">استشارة أتمتة AI</span>
+                        </div>
+                        <div class="summary-item">
+                            <span class="summary-label">التاريخ</span>
+                            <span class="summary-value sum-date-val">22 فبراير 2026</span>
+                        </div>
+                        <div class="summary-item">
+                            <span class="summary-label">الوقت</span>
+                            <span class="summary-value">10:30 صباحاً</span>
+                        </div>
+                        <div class="summary-item">
+                            <span class="summary-label">المدة</span>
+                            <span class="summary-value">45 دقيقة</span>
+                        </div>
+
+                        <div style="margin-top: 2rem; padding-top: 1.5rem; border-top: 1px dashed var(--white-10);">
+                            <p style="font-size: 0.8rem; color: var(--white-40); line-height: 1.6;">
+                                * سيتم إرسال رابط الاجتماع (Google Meet) إلى بريدك الإلكتروني بعد تأكيد الحجز.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <footer class="footer-bottom" style="border: none; padding: 2rem 0;">
+            <p class="footer-copyright">© 2026 سند. جميع الحقوق محفوظة.</p>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,392 @@
+{
+  "homeTitle": "Sanad | AI Automation for Your Business Growth",
+  "homeDesc": "Sanad - Specialized AI automation system for SMEs. We help you grow and improve customer service with advanced RAG systems.",
+  "navbar": {
+    "home": "Home",
+    "solutions": "Solutions",
+    "pricing": "Pricing",
+    "signin": "Log In",
+    "startNow": "Start Now",
+    "myAccount": "My Account"
+  },
+  "hero": {
+    "badge": "Custom AI Expert",
+    "title": "Smart Automation<br />That Grows With <span class=\"neon-text\">Your Business</span><br />Working 24/7.",
+    "description": "We help SMEs transform traditional operations into an intelligent ecosystem. We specialize in building AI agents that support your customer service using advanced RAG systems trained on your data.",
+    "statsText": "Smart Businesses",
+    "startBtn": "Start Your Transformation",
+    "demoBtn": "How RAG Works?",
+    "floatingCard1": {
+      "label": "Answer Accuracy (RAG)",
+      "value": "99.8%"
+    },
+    "floatingCard2": {
+      "label": "Cost Savings",
+      "value": "65% Annually"
+    }
+  },
+  "solutions": {
+    "title": "Automation Solutions for Modern Enterprises.",
+    "subtitle": "We provide you with an AI specialist working inside your business, learning from your data, and nurturing customer relationships automatically.",
+    "card1": {
+      "title": "Custom RAG Systems",
+      "desc": "We build a smart knowledge base from your company's files and procedures to deliver accurate and reliable answers to customers and staff.",
+      "link": "Explore Technology ←"
+    },
+    "card2": {
+      "title": "24/7 Customer Service Expert",
+      "desc": "An AI agent that handles inquiries, books appointments, and resolves issues instantly without human intervention.",
+      "link": "Get Your Expert ←"
+    },
+    "card3": {
+      "title": "Smart Analytics for Growth",
+      "desc": "Our system analyzes customer behavior and provides proactive reports to help you make growth decisions based on real data.",
+      "link": "Start Analyzing ←"
+    }
+  },
+  "specialist": {
+    "stats": {
+      "speed": { "label": "Avg Response Time", "value": "↓ Under 2s" },
+      "sales": { "label": "Automated Sales Growth", "value": "↑ +45% Quarterly" },
+      "satisfaction": { "label": "Customer Satisfaction", "value": "↑ 4.9 / 5.0" }
+    },
+    "trustText": "Certified System & Smart Build",
+    "title": "Your Data is<br /><span class=\"neon-text\">Its Mastermind.</span>",
+    "subtitle": "We do not just use generic AI, we build a system that learns from your documents, policies, and business history to offer an exclusive experience for your enterprise.",
+    "btn": "Design Your System Now",
+    "users": "+500 Active Systems"
+  },
+  "steps": {
+    "title": "The Journey to Intelligence",
+    "subtitle": "Three steps to move your enterprise into the era of smart automation.",
+    "step1": {
+      "title": "Data Analysis",
+      "desc": "We study your files and current business procedures to prepare your organization's custom RAG base."
+    },
+    "step2": {
+      "title": "Building Custom AI",
+      "desc": "Developing and training the virtual expert on your data to ensure the highest accuracy in replies and handling.",
+      "btn": "Start Now"
+    },
+    "step3": {
+      "title": "Launch & Expansion",
+      "desc": "Integrating the system into your communication channels (WhatsApp, Instagram, Website) and starting to monitor your growth."
+    }
+  },
+  "features": {
+    "title": "Comprehensive Services for Smart Growth.",
+    "subtitle": "We don’t just offer a chatbot, we provide an intelligent work ecosystem.",
+    "list": {
+      "security": {
+        "title": "RAG Data Privacy",
+        "desc": "Your data is encrypted and secured in a private environment, never used to train public models."
+      },
+      "reports": {
+        "title": "Response Quality Reports",
+        "desc": "Precise monitoring of every conversation to ensure high customer service quality."
+      },
+      "integrations": {
+        "title": "Omnichannel Integration",
+        "desc": "One expert to respond across WhatsApp, Instagram, and your Website."
+      },
+      "api": {
+        "title": "API Interface",
+        "desc": "Advanced API for seamless integration with your existing internal systems."
+      }
+    },
+    "card": {
+      "badge": "Growth System",
+      "title": "Make your customers<br />happier.",
+      "desc": "Automation is not just about saving money; it is an investment in service quality and speed.",
+      "btn": "Start Free Consultation"
+    }
+  },
+  "pricing": {
+    "title": "Plans Fitting Your Ambitions",
+    "subtitle": "Choose the optimal plan to move your enterprise to a new level of intelligent efficiency.",
+    "modalTitle": "Choose your plan to start",
+    "currency": "SAR",
+    "period": "/month",
+    "featured": "Most Popular",
+    "custom": "Contact Us",
+    "plans": {
+      "basic": {
+        "name": "Basic Plan",
+        "target": "For startups and small stores",
+        "f1": "1 Custom AI Expert",
+        "f2": "RAG Document Support (10 files)",
+        "f3": "1,000 Conversations Monthly",
+        "f4": "Website Integration",
+        "btn": "Start Now"
+      },
+      "pro": {
+        "name": "Professional Plan",
+        "target": "For growing companies & factories",
+        "f1": "3 Dedicated AI Experts",
+        "f2": "Advanced RAG (Unlimited files)",
+        "f3": "5,000 Conversations Monthly",
+        "f4": "Integration (WhatsApp + Insta + Web)",
+        "f5": "Advanced Analytics Reports",
+        "btn": "Subscribe Now"
+      },
+      "enterprise": {
+        "name": "Enterprise Plan",
+        "target": "For large organizations & custom solutions",
+        "f1": "Unlimited AI Experts",
+        "f2": "Link with Internal Systems (ERP/CRM)",
+        "f3": "Custom Technical Support 24/7",
+        "f4": "Special Training for Employees",
+        "btn": "Contact Us"
+      }
+    }
+  },
+  "footer": {
+    "brandDesc": "Sanad - Your future partner in business automation and AI for SMEs.",
+    "cols": {
+      "solutions": {
+        "title": "Solutions",
+        "l1": "Customer Service Auto",
+        "l2": "Build RAG Agents",
+        "l3": "Process Automation",
+        "l4": "Business Intelligence"
+      },
+      "company": {
+        "title": "Company",
+        "l1": "About Us",
+        "l2": "Success Stories",
+        "l3": "Tech Blog",
+        "l4": "Contact Us"
+      },
+      "resources": {
+        "title": "Resources",
+        "l1": "What is RAG?",
+        "l2": "Future of Automation",
+        "l3": "API Documentation",
+        "l4": "Help Center"
+      },
+      "newsletter": {
+        "title": "Smart Newsletter",
+        "desc": "Be the first to know about new automation tech to grow your business.",
+        "placeholder": "Your Email",
+        "btn": "Subscribe"
+      }
+    },
+    "copyright": "© 2026 Sanad Business Automation. All rights reserved."
+  },
+  "login": {
+    "title": "Log In - Sanad | My Account",
+    "desc": "Log in to the Sanad my account to manage your custom AI agents, monitor automation performance, and view AI reports.",
+    "pageTitle": "Welcome Back",
+    "pageSubtitle": "Log in to access your smart dashboard",
+    "emailLabel": "Email",
+    "emailPlaceholder": "example@company.com",
+    "passwordLabel": "Password",
+    "passwordPlaceholder": "••••••••",
+    "submitBtn": "Log In",
+    "or": "OR CONTINUE WITH",
+    "google": "Continue with Google",
+    "microsoft": "Continue with Microsoft",
+    "noAccount": "Don't have an account?",
+    "createAccount": "Create an Account"
+  },
+  "booking": {
+    "title": "Book Your Smart Consultation - Sanad | For the Future of Automation",
+    "desc": "Book an appointment for a free consultation to discuss how to integrate AI (RAG) into your strategy and exceptionally improve your customer service with Sanad.",
+    "pageTitle": "Book Your <span class=\"neon-text\">Smart</span> Consultation",
+    "pageSubtitle": "Choose a suitable time to discuss automating your business with AI",
+    "month": "February 2026",
+    "days": ["S", "M", "T", "W", "T", "F", "S"],
+    "slotsTitle": "Available Times",
+    "notesLabel": "Additional Notes",
+    "notesPlaceholder": "Tell us a bit about your business...",
+    "submitBtn": "Confirm Booking",
+    "summaryTitle": "Booking Details",
+    "serviceTypeLabel": "Service Type",
+    "serviceTypeValue": "AI Automation Consultation",
+    "dateLabel": "Date",
+    "dateSuffix": "February 2026",
+    "timeLabel": "Time",
+    "durationLabel": "Duration",
+    "durationValue": "45 Minutes",
+    "footerNote": "* The Google Meet link will be sent to your email after booking confirmation."
+  },
+  "placeholder": {
+    "about": { "title": "About Us", "desc": "Learn about Sanad's vision for changing the future of enterprise automation with AI." },
+    "success": { "title": "Success Stories", "desc": "Discover how Sanad helps companies reduce costs and increase customer satisfaction." },
+    "blog": { "title": "Tech Blog", "desc": "The latest technical articles on AI and business automation using RAG." },
+    "rag": { "title": "What is RAG?", "desc": "Everything you need to know about Retrieval-Augmented Generation to build a smart chatbot." },
+    "future": { "title": "Future of Automation", "desc": "A comprehensive vision of how AI-powered business automation will evolve." },
+    "api": { "title": "API Documentation", "desc": "Developer guide to programmatically connecting Sanad to your apps." },
+    "help": { "title": "Help Center", "desc": "Need help? Search the comprehensive guide or contact support." },
+    "default": { "title": "Page Under Construction", "desc": "We are currently working on this page, it will be available soon." },
+    "badge": "Coming Very Soon",
+    "backBtn": "Back to Home"
+  },
+  "dashboard": {
+    "title": "Dashboard - Sanad",
+    "welcome": "Welcome, {{name}}",
+    "subtitle": "Manage your AI expert and account settings",
+    "editBtn": "Edit Profile",
+    "cancelEditBtn": "Cancel Edit",
+    "logoutBtn": "Log Out",
+    "successUpdate": "Data updated successfully.",
+    "errorUpdate": "Update failed, please check your password.",
+    "errorConnection": "Server connection error.",
+    "incompleteAlertTitle": "Your account is incomplete",
+    "incompleteAlertDesc": "You must complete your business details to activate and customize your AI expert.",
+    "completeNowBtn": "Complete Account Now",
+    "accountInfo": "Account Information",
+    "proPlan": "Professional Plan",
+    "freePlan": "Free Plan",
+    "upgradeAccount": "Upgrade Account",
+    "fullName": "Full Name",
+    "phone": "Phone Number",
+    "email": "Email",
+    "businessInfo": "Business Information",
+    "businessDesc": "Business Description",
+    "businessName": "Business Name",
+    "businessCategory": "Business Category",
+    "websiteLinks": "Website / Links",
+    "notSpecified": "Not specified",
+    "noLink": "No link",
+    "aiSetup": "AI Assistant Customization",
+    "persona": "Persona (Tone of voice)",
+    "formal": "Professional & Formal",
+    "friendly": "Friendly & Proactive",
+    "humorous": "Fun & Humorous",
+    "tech": "Technical & Direct",
+    "language": "Communication Language",
+    "forbiddenWords": "Forbidden Words",
+    "none": "None",
+    "verifyIdentity": "Verify Identity",
+    "verifyDesc": "To save changes, please enter your current password.",
+    "passwordPlaceholder": "Password...",
+    "saveChanges": "Save Changes",
+    "saving": "Saving...",
+    "cropAndSave": "Crop & Save",
+    "cancel": "Cancel",
+    "cropError": "Failed to crop image"
+  },
+  "onboarding": {
+    "title": "Start Building Your Smart Expert Now - Sanad | Onboarding",
+    "desc": "Provide Sanad with your business information and customer characteristics to start building a custom RAG AI system to serve your customers automatically.",
+    "steps": {
+      "personal": "Personal Info",
+      "business": "Your Business",
+      "tech": "Technical Setup",
+      "behavior": "AI Behavior"
+    },
+    "sec1": {
+      "title": "Personal Information",
+      "pageTitle": "Create New Account",
+      "pageSubtitle": "Enter your basic details to start building your smart expert",
+      "fullNameLabel": "Full Name",
+      "fullNamePlaceholder": "Enter your full name...",
+      "genderLabel": "Gender",
+      "genderMale": "Male",
+      "genderFemale": "Female",
+      "phoneLabel": "Phone Number",
+      "phonePlaceholder": "05xxxxxxxx",
+      "emailLabel": "Personal Email",
+      "emailPlaceholder": "example@email.com",
+      "passwordLabel": "Password",
+      "passwordPlaceholder": "Password (min 8 chars, uppercase, lowercase, number)",
+      "passwordInstruction": "Password must be at least 8 characters, and include at least one uppercase letter, one lowercase letter, and one number."
+    },
+    "sec2": {
+      "title": "Business Information",
+      "catLabel": "Business Category",
+      "catComm": "Commercial",
+      "catInd": "Industrial",
+      "nameLabel": "Business Name",
+      "typeLabel": "Business Type",
+      "ageLabel": "Business Age",
+      "presenceLabel": "Presence",
+      "presOnline": "Online Only",
+      "presLocal": "Physical Store",
+      "presBoth": "Both",
+      "descLabel": "Business Description",
+      "addressLabel": "Business Address",
+      "invLabel": "Do you have inventory data?",
+      "yes": "Yes",
+      "no": "No",
+      "invPlatLabel": "Inventory Platform Used (Optional)",
+      "invPlatPlaceholder": "e.g., Salla, Zid, Odoo...",
+      "ordLabel": "Do you have an order system?",
+      "ordLink": "Order System Link (Optional)",
+      "socialLabel": "Social Media Link (Optional)",
+      "busEmailLabel": "Business Email",
+      "targetLabel": "Target Audience",
+      "scheduleDays": {
+        "sunday": "Sunday",
+        "monday": "Monday",
+        "tuesday": "Tuesday",
+        "wednesday": "Wednesday",
+        "thursday": "Thursday",
+        "friday": "Friday",
+        "saturday": "Saturday"
+      }
+    },
+    "sec3": {
+      "title": "Technical Information & Knowledge Sources",
+      "srcLabel": "Preferred Knowledge Source",
+      "srcTemp": "Use general communication template",
+      "srcUp": "Upload custom business files",
+      "uploadText": "Drag info file here or click to upload",
+      "uploadSupport": "Supports PDF, DOCX, TXT",
+      "tempText": "The system will use a professional \"communication template\" suited for most businesses to ensure friendly and effective responses.",
+      "personaLabel": "Smart Assistant Persona",
+      "personaFormal": "Formal & Serious",
+      "personaFriendly": "Friendly & Welcoming",
+      "personaHelpful": "Practical Expert",
+      "langLabel": "Language & Accent",
+      "langFusha": "Modern Standard Arabic",
+      "langAmmiya": "Colloquial (Regional)",
+      "langMixed": "Simple Mix",
+      "groupLabel": "Communicates with who?",
+      "groupAll": "Everyone",
+      "groupFemales": "Females Only",
+      "groupMales": "Males Only",
+      "groupAdults": "Adults Only",
+      "channelsLabel": "Active Communication Channels",
+      "chWhatsApp": "WhatsApp",
+      "chSite": "Website",
+      "chTelegram": "Telegram",
+      "chInstagram": "Instagram",
+      "chFacebook": "Facebook",
+      "chGoogle": "Google"
+    },
+    "sec4": {
+      "title": "AI Behavior Settings",
+      "fallbackLabel": "How to handle unknown answers?",
+      "fbText": "Send text: \"I'll verify this and get back to you\"",
+      "fbHuman": "Transfer to human agent",
+      "fbPhone": "Ask for phone number to contact later",
+      "forbiddenLabel": "Forbidden Words (comma separated)",
+      "creativityLabel": "Adherence to Sources (Creativity)",
+      "creative": "Very Creative",
+      "strict": "Strictly Adherent",
+      "notifLabel": "Notification Settings",
+      "notifNew": "Notify on new request",
+      "notifDaily": "Daily report",
+      "notifError": "Alert on wrong answers",
+      "submitNote": "Once you click submit, we will process your business data and build a trial version of your AI expert within 24 hours."
+    },
+    "selectPlaceholder": "Choose...",
+    "nav": {
+      "prev": "Previous",
+      "draft": "Save as Draft",
+      "draftAlert": "Draft saved successfully in your temporary account!",
+      "next": "Next",
+      "submit": "Submit & Build System"
+    },
+    "scheduleGrid": {
+      "title": "Weekly Working Hours (Optional)",
+      "holiday": "Holiday",
+      "from": "From",
+      "to": "To"
+    },
+    "processing": "Processing...",
+    "createAccountBtn": "Create Account"
+  }
+}
