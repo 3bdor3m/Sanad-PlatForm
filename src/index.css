@@ -1,3 +1,105 @@
 @import "tailwindcss";
 
-/* Existing global styles from style.css can be moved here or converted */
+@theme {
+  --font-sans: "Inter", "Cairo", sans-serif;
+  --font-cairo: "Cairo", sans-serif;
+  --font-tajawal: "Tajawal", sans-serif;
+
+  --color-dash-dark: #0a0c1a;
+  --color-dash-darker: #050610;
+  --color-dash-card: #0f1225;
+  --color-dash-border: rgba(255, 255, 255, 0.05);
+  --color-dash-accent: #17e596;
+  --color-dash-blue: #0ea5e9;
+  --color-dash-indigo: #6366f1;
+  --color-dash-purple: #8b5cf6;
+  --color-dash-orange: #f59e0b;
+  --color-dash-red: #ef4444;
+}
+
+body {
+  font-family: "Cairo", sans-serif;
+  @apply bg-dash-dark text-white antialiased;
+}
+
+@layer utilities {
+  .glass-card {
+    @apply bg-white/5 backdrop-blur-md border border-white/10 shadow-xl;
+  }
+
+  .glass-deep {
+    @apply bg-dash-dark/80 backdrop-blur-2xl border border-white/5 shadow-2xl;
+  }
+
+  .neon-glow {
+    text-shadow:
+      0 0 10px rgba(23, 229, 150, 0.5),
+      0 0 20px rgba(23, 229, 150, 0.3);
+    box-shadow:
+      0 0 15px rgba(23, 229, 150, 0.3),
+      0 0 30px rgba(23, 229, 150, 0.1);
+  }
+
+  .neon-border {
+    box-shadow: 0 0 15px rgba(23, 229, 150, 0.1);
+  }
+
+  .mesh-gradient {
+    background:
+      radial-gradient(at 0% 0%, rgba(23, 229, 150, 0.15) 0px, transparent 50%),
+      radial-gradient(at 100% 0%, rgba(99, 102, 241, 0.15) 0px, transparent 50%),
+      radial-gradient(at 100% 100%, rgba(139, 92, 246, 0.15) 0px, transparent 50%),
+      radial-gradient(at 0% 100%, rgba(236, 72, 153, 0.15) 0px, transparent 50%);
+  }
+
+  .noise-overlay {
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+    filter: contrast(120%) brightness(100%);
+    @apply opacity-[0.03] pointer-events-none;
+  }
+
+  .neon-glow-purple {
+    box-shadow:
+      0 0 15px rgba(139, 92, 246, 0.3),
+      0 0 30px rgba(139, 92, 246, 0.1);
+  }
+
+  .shimmer {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .shimmer::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 200%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.05), transparent);
+    animation: shimmer 3s infinite;
+  }
+
+  @keyframes shimmer {
+    0% {
+      transform: translateX(-100%);
+    }
+    100% {
+      transform: translateX(100%);
+    }
+  }
+
+  .magnetic-wrap {
+    display: inline-block;
+    transition: transform 0.3s cubic-bezier(0.23, 1, 0.32, 1);
+  }
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}

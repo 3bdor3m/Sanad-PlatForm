@@ -1,5 +1,5 @@
 import React from 'react';
-import { InteractiveHoverButton } from '@/components/ui/interactive-hover-button';
+import { InteractiveHoverButton } from '../ui/interactive-hover-button';
 import { Link } from 'react-router-dom';
 import ShinyText from '../ui/ShinyText';
 import { useTranslation } from 'react-i18next';

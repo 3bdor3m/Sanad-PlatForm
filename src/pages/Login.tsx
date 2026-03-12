@@ -1,54 +1,117 @@
 import React, { useState } from "react";
-import { useFormValidation } from "../hooks/useFormValidation";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, useLocation } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
 import { useTranslation } from "react-i18next";
-import { CheckCircle, XCircle } from "lucide-react";
+import { XCircle, CheckCircle, Loader2, Eye, EyeOff } from "lucide-react";
 
 const Login = () => {
   const { t, i18n } = useTranslation();
-  const { error, validateForm, setError } = useFormValidation();
   const navigate = useNavigate();
+  const location = useLocation();
+  
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [showPassword, setShowPassword] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
-  const [notification, setNotification] = useState<{ show: boolean; type: 'success' | 'error'; message: string }>({ show: false, type: 'success', message: '' });
+  const [showForgotPassword, setShowForgotPassword] = useState(false);
+  const [notification, setNotification] = useState<{ 
+    show: boolean; 
+    type: 'success' | 'error'; 
+    message: string 
+  }>({ show: false, type: 'success', message: '' });
 
   const isAr = i18n.language === 'ar';
+  const from = location.state?.from?.pathname || '/dashboard';
+
+  const getErrorMessage = (error: any): string => {
+    return isAr ? 'حدث خطأ في تسجيل الدخول' : 'Login error occurred';
+  };
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    if (validateForm(e.currentTarget)) {
-      setIsLoading(true);
-      try {
-        const apiUrl = import.meta.env.VITE_API_URL || `http://${window.location.hostname}:5000`;
-        const response = await fetch(
-          `${apiUrl}/api/auth/login`,
-          {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/json",
-            },
-            body: JSON.stringify({ email, password }),
-          },
-        );
+    
+    if (!email || !password) {
+      setNotification({ 
+        show: true, 
+        type: 'error', 
+        message: isAr ? 'يرجى إدخال البريد الإلكتروني وكلمة المرور' : 'Please enter email and password' 
+      });
+      return;
+    }
 
-        const data = await response.json();
+    setIsLoading(true);
+    try {
+      // Simulate API call
+      await new Promise(resolve => setTimeout(resolve, 1000));
+      localStorage.setItem('sanad_uid', email);
+      setNotification({ 
+        show: true, 
+        type: 'success', 
+        message: isAr ? 'تم تسجيل الدخول بنجاح!' : 'Logged in successfully!' 
+      });
+      
+      setTimeout(() => {
+        navigate(from, { replace: true });
+      }, 1000);
+    } catch (error) {
+      console.error("Login error:", error);
+      setNotification({ 
+        show: true, 
+        type: 'error', 
+        message: isAr ? 'حدث خطأ في تسجيل الدخول' : 'Login error occurred' 
+      });
+    } finally {
+      setIsLoading(false);
+    }
+  };
 
-        if (response.ok) {
-          localStorage.setItem('sanad_uid', data.uid || data.user.id);
-          if (data.token) localStorage.setItem('sanad_token', data.token);
-          localStorage.setItem('sanad_profile_completed', data.isProfileComplete ? 'true' : 'false');
-          navigate('/dashboard');
-        } else {
-          setNotification({ show: true, type: 'error', message: data.message || (isAr ? 'خطأ في تسجيل الدخول' : 'Login Error') });
-        }
-      } catch (err) {
-        console.error("Login error:", err);
-        setNotification({ show: true, type: 'error', message: isAr ? 'تعذر الاتصال بالسيرفر.' : 'Server connection error.' });
-      } finally {
-        setIsLoading(false);
-      }
+  const handleGoogleSignIn = async () => {
+    setIsLoading(true);
+    try {
+      // Simulate API call
+      await new Promise(resolve => setTimeout(resolve, 1000));
+      localStorage.setItem('sanad_uid', 'google-test-user-id');
+      navigate(from, { replace: true });
+    } catch (error) {
+      console.error("Google sign in error:", error);
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
+  const handleForgotPassword = async () => {
+    if (!email) {
+      setNotification({ 
+        show: true, 
+        type: 'error', 
+        message: isAr ? 'يرجى إدخال بريدك الإلكتروني أولاً' : 'Please enter your email first' 
+      });
+      return;
+    }
+
+    setIsLoading(true);
+    try {
+      // Simulate API call
+      await new Promise(resolve => setTimeout(resolve, 1000));
+      setNotification({ 
+        show: true, 
+        type: 'success', 
+        message: isAr 
+          ? 'تم إرسال رابط إعادة تعيين كلمة المرور إلى بريدك الإلكتروني' 
+          : 'Password reset link sent to your email' 
+      });
+      setShowForgotPassword(false);
+    } catch (error) {
+      console.error("Reset password error:", error);
+      setNotification({ 
+        show: true, 
+        type: 'error', 
+        message: isAr 
+          ? 'حدث خطأ في إرسال رابط إعادة التعيين' 
+          : 'Error sending reset link' 
+      });
+    } finally {
+      setIsLoading(false);
     }
   };
 
@@ -66,7 +129,9 @@ const Login = () => {
 
         <form onSubmit={handleSubmit}>
           <div className="form-group">
-            <label className="form-label" style={{ textAlign: isAr ? 'right' : 'left' }}>{t("login.emailLabel")}</label>
+            <label className="form-label" style={{ textAlign: isAr ? 'right' : 'left' }}>
+              {t("login.emailLabel")}
+            </label>
             <input
               type="email"
               className="form-input"
@@ -79,26 +144,63 @@ const Login = () => {
               style={{ textAlign: isAr ? 'right' : 'left' }}
             />
           </div>
+          
           <div className="form-group">
-            <label className="form-label" style={{ textAlign: isAr ? 'right' : 'left' }}>{t("login.passwordLabel")}</label>
-            <input
-              type="password"
-              className="form-input"
-              placeholder={t("login.passwordPlaceholder")}
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              autoComplete="current-password"
-              maxLength={128}
-              required
-              style={{ textAlign: isAr ? 'right' : 'left' }}
-            />
+            <label className="form-label" style={{ textAlign: isAr ? 'right' : 'left' }}>
+              {t("login.passwordLabel")}
+            </label>
+            <div style={{ position: 'relative' }}>
+              <input
+                type={showPassword ? "text" : "password"}
+                className="form-input"
+                placeholder={t("login.passwordPlaceholder")}
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                autoComplete="current-password"
+                maxLength={128}
+                required
+                style={{ 
+                  textAlign: isAr ? 'right' : 'left',
+                  paddingRight: '3rem'
+                }}
+              />
+              <button
+                type="button"
+                onClick={() => setShowPassword(!showPassword)}
+                style={{
+                  position: 'absolute',
+                  [isAr ? 'left' : 'right']: '0.75rem',
+                  top: '50%',
+                  transform: 'translateY(-50%)',
+                  background: 'none',
+                  border: 'none',
+                  cursor: 'pointer',
+                  color: 'var(--white-40)',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center'
+                }}
+              >
+                {showPassword ? <EyeOff size={18} /> : <Eye size={18} />}
+              </button>
+            </div>
           </div>
 
-          {error && (
-            <div className="error-banner shake" style={{ display: "block" }}>
-              {error}
-            </div>
-          )}
+          <div className="flex justify-end mb-4">
+            <button
+              type="button"
+              onClick={() => setShowForgotPassword(true)}
+              className="text-sm text-neon hover:underline"
+              style={{ 
+                background: 'none', 
+                border: 'none', 
+                cursor: 'pointer',
+                color: 'var(--neon-green)'
+              }}
+            >
+              {isAr ? 'نسيت كلمة المرور؟' : 'Forgot Password?'}
+            </button>
+          </div>
 
           <button
             type="submit"
@@ -106,7 +208,14 @@ const Login = () => {
             style={{ marginTop: "0.5rem" }}
             disabled={isLoading}
           >
-            {isLoading ? (isAr ? "جاري التحميل..." : "Loading...") : t("login.submitBtn")}
+            {isLoading ? (
+              <span style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '0.5rem' }}>
+                <Loader2 className="animate-spin" size={18} />
+                {isAr ? 'جاري تسجيل الدخول...' : 'Logging in...'}
+              </span>
+            ) : (
+              t("login.submitBtn")
+            )}
           </button>
         </form>
 
@@ -115,8 +224,11 @@ const Login = () => {
         </div>
 
         <div className="social-login">
-          <button className="btn-social">
-            {/* Google SVG from static */}
+          <button 
+            className="btn-social"
+            onClick={handleGoogleSignIn}
+            disabled={isLoading}
+          >
             <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
               <path
                 d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"
@@ -137,22 +249,6 @@ const Login = () => {
             </svg>
             {t("login.google")}
           </button>
-          <button type="button" className="btn-social">
-            {/* Microsoft SVG */}
-            <svg
-              width="20"
-              height="20"
-              viewBox="0 0 21 21"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path d="M10 0H0V10H10V0Z" fill="#F25022" />
-              <path d="M21 0H11V10H21V0Z" fill="#7FBA00" />
-              <path d="M10 11H0V21H10V11Z" fill="#00A4EF" />
-              <path d="M21 11H11V21H21V11Z" fill="#FFB900" />
-            </svg>
-            {t("login.microsoft")}
-          </button>
         </div>
 
         <div className="auth-footer">
@@ -165,14 +261,121 @@ const Login = () => {
           </Link>
         </div>
 
-        {/* Login notification overlay */}
         {notification.show && (
-          <div className="modal-overlay" style={{ position: "fixed", top: 0, left: 0, right: 0, bottom: 0, backgroundColor: "rgba(0,0,0,0.7)", display: "flex", justifyContent: "center", alignItems: "center", zIndex: 9999 }}>
-            <div className="modal-content slideUp-animation" style={{ background: "var(--bg-glass)", backdropFilter: "blur(16px)", padding: "2rem", borderRadius: "16px", textAlign: "center", border: "1px solid var(--white-10)", maxWidth: '350px' }}>
-              <div style={{ color: "#ff4b4b", margin: "0 auto 1.5rem", display: 'flex', justifyContent: 'center' }}><XCircle size={56} /></div>
-              <h3 style={{ color: "white", marginBottom: "1rem", fontSize: "1.5rem" }}>{isAr ? "خطأ" : "Error"}</h3>
-              <p style={{ color: "var(--white-70)", marginBottom: "1.5rem" }}>{notification.message}</p>
-              <button className="btn-glass" style={{ width: '100%' }} onClick={() => setNotification({ ...notification, show: false })}>{isAr ? "إغلاق" : "Close"}</button>
+          <div className="modal-overlay" style={{ 
+            position: "fixed", 
+            top: 0, 
+            left: 0, 
+            right: 0, 
+            bottom: 0, 
+            backgroundColor: "rgba(0,0,0,0.7)", 
+            display: "flex", 
+            justifyContent: "center", 
+            alignItems: "center", 
+            zIndex: 9999 
+          }}>
+            <div className="modal-content slideUp-animation" style={{ 
+              background: "var(--bg-glass)", 
+              backdropFilter: "blur(16px)", 
+              padding: "2rem", 
+              borderRadius: "16px", 
+              textAlign: "center", 
+              border: "1px solid var(--white-10)", 
+              maxWidth: '350px' 
+            }}>
+              <div style={{ 
+                color: notification.type === 'error' ? "#ff4b4b" : "#17e596", 
+                margin: "0 auto 1.5rem", 
+                display: 'flex', 
+                justifyContent: 'center' 
+              }}>
+                {notification.type === 'error' ? <XCircle size={56} /> : <CheckCircle size={56} />}
+              </div>
+              <h3 style={{ 
+                color: "white", 
+                marginBottom: "1rem", 
+                fontSize: "1.5rem" 
+              }}>
+                {notification.type === 'error' 
+                  ? (isAr ? "خطأ" : "Error") 
+                  : (isAr ? "نجاح" : "Success")
+                }
+              </h3>
+              <p style={{ 
+                color: "var(--white-70)", 
+                marginBottom: "1.5rem" 
+              }}>
+                {notification.message}
+              </p>
+              <button 
+                className="btn-glass" 
+                style={{ width: '100%' }} 
+                onClick={() => setNotification({ ...notification, show: false })}
+              >
+                {isAr ? "إغلاق" : "Close"}
+              </button>
+            </div>
+          </div>
+        )}
+
+        {showForgotPassword && (
+          <div className="modal-overlay" style={{ 
+            position: "fixed", 
+            top: 0, 
+            left: 0, 
+            right: 0, 
+            bottom: 0, 
+            backgroundColor: "rgba(0,0,0,0.7)", 
+            display: "flex", 
+            justifyContent: "center", 
+            alignItems: "center", 
+            zIndex: 9999 
+          }}>
+            <div className="modal-content slideUp-animation" style={{ 
+              background: "var(--bg-glass)", 
+              backdropFilter: "blur(16px)", 
+              padding: "2rem", 
+              borderRadius: "16px", 
+              textAlign: "center", 
+              border: "1px solid var(--white-10)", 
+              maxWidth: '350px' 
+            }}>
+              <h3 style={{ 
+                color: "white", 
+                marginBottom: "1rem", 
+                fontSize: "1.5rem" 
+              }}>
+                {isAr ? 'إعادة تعيين كلمة المرور' : 'Reset Password'}
+              </h3>
+              <p style={{ 
+                color: "var(--white-70)", 
+                marginBottom: "1.5rem" 
+              }}>
+                {isAr 
+                  ? 'سيتم إرسال رابط إعادة التعيين إلى بريدك الإلكتروني' 
+                  : 'A password reset link will be sent to your email'}
+              </p>
+              <div style={{ display: 'flex', gap: '1rem' }}>
+                <button 
+                  className="btn-glass" 
+                  style={{ flex: 1 }} 
+                  onClick={() => setShowForgotPassword(false)}
+                >
+                  {isAr ? "إلغاء" : "Cancel"}
+                </button>
+                <button 
+                  className="btn-primary" 
+                  style={{ flex: 1 }} 
+                  onClick={handleForgotPassword}
+                  disabled={isLoading}
+                >
+                  {isLoading ? (
+                    <Loader2 className="animate-spin" size={18} style={{ margin: '0 auto' }} />
+                  ) : (
+                    isAr ? 'إرسال' : 'Send'
+                  )}
+                </button>
+              </div>
             </div>
           </div>
         )}

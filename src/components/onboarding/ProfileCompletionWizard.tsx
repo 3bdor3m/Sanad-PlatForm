@@ -97,24 +97,13 @@ const ProfileCompletionWizard: React.FC<ProfileCompletionWizardProps> = ({ uid, 
     if (validateForm(e.currentTarget)) {
       setIsLoading(true);
       try {
-        const apiUrl = import.meta.env.VITE_API_URL || `http://${window.location.hostname}:5000`;
-        const response = await fetch(`${apiUrl}/api/complete-profile`, {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ uid, ...formData }),
-        });
+        // Simulate API call
+        await new Promise(resolve => setTimeout(resolve, 1500));
         
-        let data;
-        try { data = await response.json(); } catch(e) {}
-
-        if (response.ok) {
-          setNotification({ show: true, type: 'success', message: 'تم استكمال إعداد الخبير الذكي بنجاح!' });
-          setTimeout(() => {
-            onComplete();
-          }, 2000);
-        } else {
-          setNotification({ show: true, type: 'error', message: data?.message || 'حدث خطأ.' });
-        }
+        setNotification({ show: true, type: 'success', message: 'تم استكمال إعداد الخبير الذكي بنجاح!' });
+        setTimeout(() => {
+          onComplete();
+        }, 2000);
       } catch (err) {
         setNotification({ show: true, type: 'error', message: 'تعذر الاتصال بالسيرفر.' });
       } finally {

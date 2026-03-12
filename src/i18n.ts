@@ -17,7 +17,7 @@ i18n
     resources,
     fallbackLng: 'ar',
     detection: {
-      order: ['localStorage', 'sessionStorage', 'cookie'], // Removed 'navigator' to prevent defaulting to browser's English
+      order: ['localStorage', 'sessionStorage', 'cookie'],
       caches: ['localStorage']
     },
     interpolation: {
@@ -28,6 +28,18 @@ i18n
 i18n.on('languageChanged', (lng) => {
   document.documentElement.dir = i18n.dir();
   document.documentElement.lang = lng;
+  // Sync RTL/LTR class for tailwind or specific styles
+  if (lng === 'ar') {
+    document.body.classList.add('rtl');
+    document.body.classList.remove('ltr');
+  } else {
+    document.body.classList.add('ltr');
+    document.body.classList.remove('rtl');
+  }
 });
+
+// Initial set
+document.documentElement.dir = i18n.dir();
+document.documentElement.lang = i18n.language;
 
 export default i18n;

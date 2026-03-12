@@ -1,58 +1,93 @@
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
+import { BrowserRouter as Router, Routes, Route, Outlet } from 'react-router-dom'
 import { Suspense, lazy } from 'react'
-import { HelmetProvider } from 'react-helmet-async';
 import Layout from './components/layout/Layout'
+import ErrorBoundary from './components/ErrorBoundary'
+import { ROUTES, COLORS } from './constants'
 
-// Eager load only critical/initial pages if desired, but here we lazy load everything
+/* ─── Lazy-loaded page chunks ─── */
 const Home = lazy(() => import('./pages/Home'))
 const Login = lazy(() => import('./pages/Login'))
 const Booking = lazy(() => import('./pages/Booking'))
 const Onboarding = lazy(() => import('./pages/Onboarding'))
 const Profile = lazy(() => import('./pages/Profile'))
-const Dashboard = lazy(() => import('./pages/Dashboard'))
 const PlaceholderPage = lazy(() => import('./pages/PlaceholderPage'))
 
-// Simple loading fallback
+/**
+ * PageLoader — a minimal branded spinner displayed while lazy-loaded
+ * route chunks are being fetched over the network.
+ */
 const PageLoader = () => (
-  <div style={{ height: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center', backgroundColor: '#090E17', color: '#17E596' }}>
-    <div className="loader" style={{ width: '40px', height: '40px', border: '3px solid rgba(23, 229, 150, 0.3)', borderTopColor: '#17E596', borderRadius: '50%', animation: 'spin 1s linear infinite' }} />
+  <div
+    role="status"
+    aria-label="جاري تحميل الصفحة"
+    style={{
+      height: '100vh',
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'center',
+      backgroundColor: COLORS.NAVY_DEEP,
+      color: COLORS.NEON,
+    }}
+  >
+    <div
+      style={{
+        width: 40,
+        height: 40,
+        border: `3px solid ${COLORS.NEON}4D`,
+        borderTopColor: COLORS.NEON,
+        borderRadius: '50%',
+        animation: 'spin 1s linear infinite',
+      }}
+    />
     <style>{`@keyframes spin { to { transform: rotate(360deg); } }`}</style>
   </div>
+)
+
+const MainLayout = () => (
+  <Layout>
+    <Suspense fallback={<PageLoader />}>
+      <Outlet />
+    </Suspense>
+  </Layout>
 );
 
-import { Navigate } from 'react-router-dom';
-
-const ProtectedRoute = ({ children }: { children: React.ReactNode }) => {
-  const uid = localStorage.getItem('sanad_uid');
-  if (!uid) {
-    return <Navigate to="/login" replace />;
-  }
-  return <>{children}</>;
-};
-
+/**
+ * App — root component of the Sanad Platform.
+ *
+ * Wraps the entire application inside:
+ * - `Router`        — react-router browser router
+ * - `ErrorBoundary` — catches lazy-load & render failures
+ */
 function App() {
   return (
     <Router>
-      <Layout>
-        <Suspense fallback={<PageLoader />}>
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/login" element={<Login />} />
-            <Route path="/booking" element={<Booking />} />
-            <Route path="/start" element={<Onboarding />} />
-            <Route path="/dashboard" element={<ProtectedRoute><Dashboard /></ProtectedRoute>} />
-            <Route path="/me" element={<ProtectedRoute><Profile /></ProtectedRoute>} />
-            <Route path="/about" element={<PlaceholderPage />} />
-            <Route path="/success-stories" element={<PlaceholderPage />} />
-            <Route path="/blog" element={<PlaceholderPage />} />
-            <Route path="/what-is-rag" element={<PlaceholderPage />} />
-            <Route path="/future-of-automation" element={<PlaceholderPage />} />
-            <Route path="/api-docs" element={<PlaceholderPage />} />
-            <Route path="/help-center" element={<PlaceholderPage />} />
+      <ErrorBoundary>
+        <Routes>
+          {/* ── Public routes with normal Layout ── */}
+          <Route element={<MainLayout />}>
+              <Route path={ROUTES.HOME} element={<Home />} />
+              <Route path={ROUTES.BOOKING} element={<Booking />} />
+              <Route path={ROUTES.ONBOARDING} element={<Onboarding />} />
+
+              {/* ── Guest-only routes (redirect if authenticated) ── */}
+              <Route path={ROUTES.LOGIN} element={<Login />} />
+
+              {/* ── Protected routes inside normal Layout (e.g. Profile) ── */}
+              <Route path={ROUTES.PROFILE} element={<Profile />} />
+
+              {/* ── Informational / placeholder pages ── */}
+              <Route path={ROUTES.ABOUT} element={<PlaceholderPage />} />
+              <Route path={ROUTES.SUCCESS_STORIES} element={<PlaceholderPage />} />
+              <Route path={ROUTES.BLOG} element={<PlaceholderPage />} />
+              <Route path={ROUTES.WHAT_IS_RAG} element={<PlaceholderPage />} />
+              <Route path={ROUTES.FUTURE_OF_AUTOMATION} element={<PlaceholderPage />} />
+              <Route path={ROUTES.API_DOCS} element={<PlaceholderPage />} />
+              <Route path={ROUTES.HELP_CENTER} element={<PlaceholderPage />} />
+            </Route>
+
           </Routes>
-        </Suspense>
-      </Layout>
-    </Router>
+        </ErrorBoundary>
+      </Router>
   )
 }
 

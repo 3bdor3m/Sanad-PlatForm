@@ -3,7 +3,7 @@ import { useFormValidation } from "../hooks/useFormValidation";
 import { CustomSelect } from "../components/onboarding/OnboardingUI";
 import { Helmet } from "react-helmet-async";
 import { useTranslation } from "react-i18next";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import { CheckCircle, XCircle, Eye, EyeOff } from "lucide-react";
 import ShinyText from "../components/ui/ShinyText";
 
@@ -11,6 +11,8 @@ const Onboarding = () => {
   const { t, i18n } = useTranslation();
   const { error, validateForm, setError } = useFormValidation();
   const navigate = useNavigate();
+  const isAr = i18n.language === 'ar';
+  
   const [notification, setNotification] = useState<{ show: boolean; type: 'success' | 'error'; message: string }>({ show: false, type: 'success', message: '' });
   const [isLoading, setIsLoading] = useState(false);
   const [isPasswordFocused, setIsPasswordFocused] = useState(false);
@@ -45,44 +47,22 @@ const Onboarding = () => {
 
   const submitWithPlan = async (plan: string) => {
     setIsLoading(true);
-    try {
-      const apiUrl = import.meta.env.VITE_API_URL || "http://localhost:5000";
-      const response = await fetch(`${apiUrl}/api/auth/signup`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ ...formData, selectedPlan: plan }),
-      });
-      
-      const data = await response.json();
-      
-      if (response.ok) {
-        localStorage.setItem('sanad_uid', data.user.id);
-        if (data.token) localStorage.setItem('sanad_token', data.token);
-        localStorage.setItem('sanad_profile_completed', 'false');
-        
-        setShowPlansModal(false);
-        setNotification({ show: true, type: 'success', message: 'تم التسجيل بنجاح! جاري التوجيه للوحة التحكم...' });
-        
-        setTimeout(() => {
-          navigate('/dashboard');
-        }, 1500);
+    
+    // Simulate backend call
+    await new Promise(resolve => setTimeout(resolve, 1500));
 
-      } else if (response.status === 409) {
-        setShowPlansModal(false);
-        setNotification({ show: true, type: 'error', message: data?.message || 'هذا البريد الإلكتروني مسجل مسبقاً.' });
-      } else {
-        setShowPlansModal(false);
-        setNotification({ show: true, type: 'error', message: data?.message || 'خطأ في التسجيل' });
-      }
-    } catch (err) {
-      setShowPlansModal(false);
-      setNotification({ show: true, type: 'error', message: 'تعذر الاتصال بالسيرفر. تأكد من اتصالك بالإنترنت.' });
-    } finally {
-      setIsLoading(false);
-    }
+    localStorage.setItem('sanad_uid', 'mock-user-id');
+    localStorage.setItem('sanad_profile_completed', 'true');
+    
+    setShowPlansModal(false);
+    setNotification({ show: true, type: 'success', message: isAr ? 'تم التسجيل بنجاح! جاري التوجيه...' : 'Registered successfully! Redirecting...' });
+    
+    setTimeout(() => {
+      navigate('/dashboard');
+    }, 1500);
+
+    setIsLoading(false);
   };
-
-  const isAr = i18n.language === 'ar';
 
   return (
     <main className="onboarding-wrapper" dir={isAr ? "rtl" : "ltr"}>
@@ -247,6 +227,63 @@ const Onboarding = () => {
               </button>
             </div>
           </form>
+
+        <div className="auth-separator">
+          <span>{isAr ? 'أو' : 'OR'}</span>
+        </div>
+
+        <div className="social-login">
+          <button 
+            className="btn-social" 
+            onClick={async () => {
+              setIsLoading(true);
+              try {
+                // Simulate backend call
+                await new Promise(resolve => setTimeout(resolve, 1500));
+          
+                navigate('/dashboard');
+              } catch (error: any) {
+                console.error("Google sign in error:", error);
+                setNotification({ show: true, type: 'error', message: isAr ? 'خطأ في تسجيل الدخول عبر جوجل' : 'Google sign-in error' });
+              } finally {
+                setIsLoading(false);
+              }
+            }}
+            disabled={isLoading}
+            type="button"
+          >
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+              <path
+                d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"
+                fill="#4285F4"
+              />
+              <path
+                d="M12 23c3.11 0 5.72-1.03 7.63-2.79l-3.57-2.77c-.99.66-2.26 1.05-4.06 1.05-3.12 0-5.77-2.11-6.72-4.94H2.01v3.06C3.91 19.58 7.69 23 12 23z"
+                fill="#34A853"
+              />
+              <path
+                d="M5.28 13.55c-.24-.72-.38-1.49-.38-2.3s.14-1.58.38-2.3V5.89H2.01C1.28 7.34 1 8.97 1 10.75c0 1.78.28 3.41.73 4.86l3.55-2.06z"
+                fill="#FBBC05"
+              />
+              <path
+                d="M12 4.75c1.69 0 3.21.58 4.41 1.72l3.31-3.31C17.71 1.03 15.1 0 12 0 7.69 0 3.91 3.42 2.01 7.69l3.55 3.06c.95-2.83 3.6-4.94 6.72-4.94z"
+                fill="#EA4335"
+              />
+            </svg>
+            {isAr ? 'التسجيل عبر Google' : 'Sign up with Google'}
+          </button>
+        </div>
+
+        <div className="auth-footer" style={{ marginTop: '1rem', textAlign: 'center' }}>
+          <span style={{ color: 'var(--white-50)' }}>{isAr ? 'لديك حساب بالفعل؟' : 'Already have an account?'}</span>{" "}
+          <Link
+            to="/login"
+            className={`text-neon hover:underline font-bold ${isAr ? 'mr-1' : 'ml-1'}`}
+          >
+            {isAr ? 'تسجيل الدخول' : 'Log In'}
+          </Link>
+        </div>
+
         </div>
       </div>
 

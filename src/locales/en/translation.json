@@ -263,9 +263,13 @@
     "passwordPlaceholder": "Password...",
     "saveChanges": "Save Changes",
     "saving": "Saving...",
-    "cropAndSave": "Crop & Save",
+    "cropAndSave": "Apply Picture",
+    "cropSuccess": "Picture cropped successfully! Remember to click 'Save Changes' at the bottom to persist it.",
     "cancel": "Cancel",
-    "cropError": "Failed to crop image"
+    "cropError": "Failed to crop image",
+    "successUpdate": "Profile updated successfully.",
+    "updateError": "Update failed, check your password.",
+    "connectionError": "Server connection error."
   },
   "onboarding": {
     "title": "Start Building Your Smart Expert Now - Sanad | Onboarding",

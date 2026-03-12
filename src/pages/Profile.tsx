@@ -6,7 +6,7 @@ import {
   User, Mail, MapPin, Smartphone, 
   Briefcase, Target, Languages, 
   Zap, Crown, ChevronLeft, Loader2,
-  AlertCircle
+  AlertCircle, LogOut, CheckCircle
 } from 'lucide-react';
 import ShinyText from '../components/ui/ShinyText';
 import { motion } from 'framer-motion';
@@ -31,43 +31,61 @@ const Profile = () => {
   const [userData, setUserData] = useState<UserData | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
+  const [isLoggingOut, setIsLoggingOut] = useState(false);
+
+  const mockUser = {
+    displayName: isAr ? 'أحمد محمد' : 'Ahmed Mohamed',
+    email: 'admin@sanad.com',
+    phoneNumber: '+966 50 000 0000',
+    emailVerified: true,
+    photoURL: 'https://i.pravatar.cc/150?img=11'
+  };
 
   useEffect(() => {
     const fetchProfile = async () => {
-      const token = localStorage.getItem('sanad_token');
-      if (!token) {
+      // Simulate API call
+      await new Promise(resolve => setTimeout(resolve, 800));
+
+      const uid = localStorage.getItem('sanad_uid');
+      if (!uid) {
         navigate('/login');
         return;
       }
 
-      try {
-        const apiUrl = import.meta.env.VITE_API_URL || "http://localhost:5000";
-        const response = await fetch(`${apiUrl}/api/auth/me`, {
-          headers: {
-            'Authorization': `Bearer ${token}`
-          }
-        });
-
-        const result = await response.json();
-
-        if (response.ok && result.success) {
-          setUserData(result.data);
-        } else {
-          // If token is invalid or expired
-          localStorage.removeItem('sanad_token');
-          localStorage.removeItem('sanad_uid');
-          navigate('/login');
-        }
-      } catch (err) {
-        console.error('Error fetching profile:', err);
-        setError(isAr ? 'تعذر جلب بيانات الملف الشخصي.' : 'Could not fetch profile data.');
-      } finally {
-        setLoading(false);
-      }
+      setUserData({
+        fullName: mockUser.displayName || (isAr ? 'المستخدم' : 'User'),
+        email: mockUser.email || '',
+        phoneNumber: mockUser.phoneNumber || (isAr ? 'غير مضاف' : 'Not added'),
+        address: isAr ? 'الرياض, المملكة العربية السعودية' : 'Riyadh, Saudi Arabia',
+        plan: 'pro',
+        activityName: isAr ? 'مؤسسة الأفق' : 'Horizon Est.',
+        activityField: isAr ? 'تقنية المعلومات' : 'IT',
+        activityDescription: isAr ? 'خدمات برمجية وحلول ذكية' : 'Software services and smart solutions',
+        toneOfVoice: 'professional',
+        language: 'mixed',
+      });
+      setLoading(false);
     };
 
     fetchProfile();
   }, [navigate, isAr]);
+
+  const handleLogout = async () => {
+    setIsLoggingOut(true);
+    try {
+      // Simulate API call
+      await new Promise(resolve => setTimeout(resolve, 800));
+      localStorage.removeItem('sanad_uid');
+      localStorage.removeItem('sanad_token');
+      localStorage.removeItem('sanad_profile_completed');
+      navigate('/login');
+    } catch (error) {
+      console.error('Logout error:', error);
+      setError(isAr ? 'حدث خطأ في تسجيل الخروج' : 'Error logging out');
+    } finally {
+      setIsLoggingOut(false);
+    }
+  };
 
   const containerVariants = {
     hidden: { opacity: 0, y: 20 },
@@ -127,7 +145,60 @@ const Profile = () => {
           <h1 className="text-3xl font-bold text-white">
             {isAr ? 'الملف الشخصي' : 'My Account'}
           </h1>
+          <div className="mr-auto">
+            <button
+              onClick={handleLogout}
+              disabled={isLoggingOut}
+              className="flex items-center gap-2 px-4 py-2 rounded-lg bg-red-500/10 border border-red-500/30 text-red-400 hover:bg-red-500/20 transition-colors"
+            >
+              {isLoggingOut ? (
+                <Loader2 className="w-4 h-4 animate-spin" />
+              ) : (
+                <LogOut className="w-4 h-4" />
+              )}
+              {isAr ? 'تسجيل الخروج' : 'Logout'}
+            </button>
+          </div>
         </motion.div>
+
+        {mockUser?.emailVerified === false && (
+          <motion.div 
+            initial={{ opacity: 0, y: -10 }}
+            animate={{ opacity: 1, y: 0 }}
+            className="mb-6 p-4 rounded-xl bg-yellow-500/10 border border-yellow-500/30"
+          >
+            <div className="flex items-center gap-3">
+              <AlertCircle className="w-5 h-5 text-yellow-500" />
+              <p className="text-yellow-400 text-sm">
+                {isAr 
+                  ? 'لم تقم بتحقق من بريدك الإلكتروني. يرجى التحقق من صندوق الوارد.' 
+                  : 'Your email is not verified. Please check your inbox.'}
+              </p>
+            </div>
+          </motion.div>
+        )}
+
+        {mockUser?.photoURL && (
+          <motion.div 
+            initial={{ opacity: 0, y: -10 }}
+            animate={{ opacity: 1, y: 0 }}
+            className="mb-6 flex items-center gap-4"
+          >
+            <img 
+              src={mockUser.photoURL} 
+              alt={isAr ? 'صورة الملف الشخصي' : 'Profile picture'}
+              className="w-20 h-20 rounded-full border-2 border-[#17e596]"
+            />
+            <div>
+              <p className="text-white font-medium">
+                {mockUser.displayName || (isAr ? 'المستخدم' : 'User')}
+              </p>
+              <p className="text-white/60 text-sm">
+                {mockUser.email}
+              </p>
+            </div>
+          </motion.div>
+        )}
 
         <motion.div 
           variants={containerVariants}
@@ -135,7 +206,6 @@ const Profile = () => {
           animate="visible"
           className="grid gap-8"
         >
-          {/* Section 1: Account Info */}
           <motion.section variants={itemVariants} className="profile-section-card">
             <div className="flex items-center gap-3 mb-6">
               <div className="p-2 rounded-lg bg-[#17e596]/10">
@@ -186,6 +256,9 @@ const Profile = () => {
                 <div className="flex items-center gap-2 text-white/90">
                   <Mail className="w-4 h-4 text-white/40" />
                   {userData?.email}
+                  {mockUser?.emailVerified && (
+                    <CheckCircle className="w-4 h-4 text-[#17e596] mr-2" />
+                  )}
                 </div>
               </div>
 
@@ -211,7 +284,6 @@ const Profile = () => {
             </div>
           </motion.section>
 
-          {/* Section 2: Business Info */}
           <motion.section variants={itemVariants} className="profile-section-card">
             <div className="flex items-center gap-3 mb-6">
               <div className="p-2 rounded-lg bg-blue-500/10">
@@ -253,7 +325,6 @@ const Profile = () => {
             </div>
           </motion.section>
 
-          {/* Section 3: AI Customization */}
           <motion.section variants={itemVariants} className="profile-section-card">
             <div className="flex items-center gap-3 mb-6">
               <div className="p-2 rounded-lg bg-purple-500/10">
